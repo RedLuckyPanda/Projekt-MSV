@@ -1,0 +1,63 @@
+DT trainiert auf IEMO, getestet auf MSP:
+Accuracy: 0.2757000195809673
+              precision    recall  f1-score   support
+
+           A       0.20      0.32      0.25       746
+           H       0.26      0.66      0.37      1261
+           N       0.54      0.13      0.21      2293
+           S       0.48      0.03      0.06       807
+
+    accuracy                           0.28      5107
+   macro avg       0.37      0.29      0.22      5107
+weighted avg       0.41      0.28      0.23      5107
+
+[[ 241  467   35    3]
+ [ 330  836   92    3]
+ [ 537 1429  307   20]
+ [ 112  534  137   24]]
+pred:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([1220, 3266,  571,   50]))
+test:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([ 746, 1261, 2293,  807]))
+train:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([1090, 1615, 1695, 1075]))
+
+
+DT trainiert auf MSP, getested auf IEMO:
+Accuracy: 0.3522644265887509
+              precision    recall  f1-score   support
+
+           A       0.39      0.16      0.23      1091
+           H       0.40      0.29      0.34      1623
+           N       0.35      0.39      0.37      1690
+           S       0.31      0.59      0.41      1072
+
+    accuracy                           0.35      5476
+   macro avg       0.37      0.36      0.34      5476
+weighted avg       0.37      0.35      0.34      5476
+
+[[178 411 278 224]
+ [106 466 607 444]
+ [100 228 656 706]
+ [ 69  54 320 629]]
+pred:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([ 453, 1159, 1861, 2003]))
+test:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([1091, 1623, 1690, 1072]))
+train:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([ 746, 1260, 2289,  811]))
+
+Beide Datensätze zusammengefasst:
+Accuracy: 0.47895229186155286
+              precision    recall  f1-score   support
+
+           A       0.45      0.46      0.46       550
+           H       0.44      0.36      0.40       885
+           N       0.51      0.60      0.55      1201
+           S       0.48      0.43      0.45       571
+
+    accuracy                           0.48      3207
+   macro avg       0.47      0.46      0.46      3207
+weighted avg       0.48      0.48      0.47      3207
+
+[[254 133 138  25]
+ [180 317 312  76]
+ [104 214 722 161]
+ [ 22  56 250 243]]
+pred:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([ 560,  720, 1422,  505]))
+test:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([ 550,  885, 1201,  571]))
+train:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([1307, 2023, 2820, 1332]))
