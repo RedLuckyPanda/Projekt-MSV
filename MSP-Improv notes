@@ -1,0 +1,55 @@
+FORSCHUNGSFRAGE: "Welchen Einfluss haben die Qualität/Zusammensetzung des verwendeten Korpus auf die Performance von DT und SVC?"
+
+
+
+DIE KORPORA:
+
+
+MSP-IMPROV
+
+"There are 6 sessions each session is a dyadic interaction between two speakers.
+each session consists of 20 target sentences,
+the folder notation is written as sentence number followed by inteneded emotion, so S01A folder contains recordings for target sentence 1 with intended Angry Emotion.
+Intended emotions are ( Angry, Happy, Sad, Neutral)"
+
+Klassen: Angry (A), Happy (H), Sad (S), Neutral N), Other O), X (Kein agreement zwischen annotators)
+
+Tonqualität (z. B. Hintergrundrauschen), Lautstärke und Länge der samples variieren stark, Emotionen sind nicht immer überzeugend gespielt, Aufnahmen brechen teils zu spät ab (Stille am Ende) oder fangen zu früh an
+
+P (Preparation) spontaneous speech, aber sehr leise
+
+Man hört immer leise die Stimme des Gesprächspartners
+
+
+IEMOCAP
+
+auch Stimmen anderer Gesprächspartner hörbar
+Hintergrundrauschen bei Sad
+
+Excited/Happy sind sehr ähnlich, -> zusammenlegen
+
+Annotations:
+The file 'annotation_summary.txt' contains one line per file in the format:
+[START_TIME - END_TIME] TURN_NAME EMOTION [Valence, Arousal, Dominance] with EMOTION being the categorical class, and Valence, Arousal, Dominance represented by scores between from 1 to 5. These are the majority labels respectively the average scores of all raters.
+Full annotation details (single raters) are found in the file 'full_annotation.txt'.
+
+
+RESULTS
+
+(Ergebnisse MSP-IMPROV für DT und SVC zusammenfassen)
+(Ergebnisse IEMOCAP für DT und SVC zusammenfassen)
+
+Kombinationen:
+
+Vergleich IEMOCAP / MSP-IMPROV
+Wenn man das Modell auf den einen Korpus trainiert und mit dem anderen testet, verschlechtert sich die performance extrem, z. B. bei sad. Auffällig: Emotionen werden in den Korpora anders geschauspielert, in IEMOCAP ist Sad zum Beispiel sehr ruhig, in MSP-IMPROV sind die Personen auf sehr aufgebrachte Art traurig/aufgelöst
+-> Wie definiert man, wie Emotionen klingen sollen?
+
+Wenn man auf MSP-IMPROV trainert und auf IEMOCAP testet, wird Sad in Neutral geschoben (weil Sad in IEMOCAP nicht so extrem aufgelöst klingt?
+
+Auf IEMOCAP trainiert und MSP-IMPROV getestet? (DT und SVC)
+
+Kombination aus beidem?
+
+
+FAZIT?
