@@ -1,0 +1,11 @@
+Ergebnisse/ Schlüsse aus Vergleich DT IEMO vs MSP:
+
+IEMO performt ähnlich gut auf allen Emotionsklassen.
+angry hat hier die höchste f1-score (0.60), happy/ excited die schlechteste (0.47).
+Bei MSP gibt es größere Unterschiede in der Performance auf den Klassen.
+angry hat hier die schlechteste f1-score (0.30), neutral die höchste (0.63).
+Auch sad hat mit MSP eine niedrige f1-score (0.38) und mit IEMO eine recht hohe (0.58).
+happy wird auf beiden Datensätzen ähnlich gut erkannt (IEMO 0.47, MSP 0.42).
+-> Auf Qualität der Datensätze zurückzuführen?
+
+
