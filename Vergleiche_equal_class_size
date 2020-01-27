@@ -1,0 +1,143 @@
+SVM auf MSP, alle Klassen begrenzt auf 754 Datenpunkte
+              precision    recall  f1-score   support
+
+           A       0.57      0.53      0.55       225
+           H       0.47      0.46      0.46       221
+           N       0.58      0.56      0.57       248
+           S       0.40      0.45      0.42       211
+
+    accuracy                           0.50       905
+   macro avg       0.50      0.50      0.50       905
+weighted avg       0.51      0.50      0.50       905
+
+[[120  56  19  30]
+ [ 47 102  29  43]
+ [ 10  30 138  70]
+ [ 34  31  52  94]]
+pred:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([211, 219, 238, 237]))
+test:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([225, 221, 248, 211]))
+train:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([529, 533, 506, 543]))
+
+neutral vs sad
+              precision    recall  f1-score   support
+
+           N       0.73      0.69      0.71       234
+           S       0.69      0.73      0.71       219
+
+    accuracy                           0.71       453
+   macro avg       0.71      0.71      0.71       453
+weighted avg       0.71      0.71      0.71       453
+
+[[162  72]
+ [ 60 159]]
+pred:  (array(['N', 'S'], dtype='<U1'), array([222, 231]))
+test:  (array(['N', 'S'], dtype='<U1'), array([234, 219]))
+train:  (array(['N', 'S'], dtype='<U1'), array([520, 535]))
+
+neutral vs angry
+              precision    recall  f1-score   support
+
+           A       0.95      0.70      0.81       232
+           N       0.75      0.96      0.85       221
+
+    accuracy                           0.83       453
+   macro avg       0.85      0.83      0.83       453
+weighted avg       0.86      0.83      0.83       453
+
+[[162  70]
+ [  8 213]]
+pred:  (array(['A', 'N'], dtype='<U1'), array([170, 283]))
+test:  (array(['A', 'N'], dtype='<U1'), array([232, 221]))
+train:  (array(['A', 'N'], dtype='<U1'), array([522, 533]))
+
+neutral vs happy
+              precision    recall  f1-score   support
+
+           H       0.78      0.73      0.76       222
+           N       0.76      0.80      0.78       231
+
+    accuracy                           0.77       453
+   macro avg       0.77      0.77      0.77       453
+weighted avg       0.77      0.77      0.77       453
+
+[[163  59]
+ [ 46 185]]
+pred:  (array(['H', 'N'], dtype='<U1'), array([209, 244]))
+test:  (array(['H', 'N'], dtype='<U1'), array([222, 231]))
+train:  (array(['H', 'N'], dtype='<U1'), array([532, 523]))
+
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+DT auf MSP, alle Klassen begrenzt auf 754 Datenpunkte
+Accuracy: 0.5370165745856353
+              precision    recall  f1-score   support
+
+           A       0.53      0.60      0.56       225
+           H       0.47      0.54      0.50       221
+           N       0.64      0.52      0.58       248
+           S       0.54      0.48      0.51       211
+
+    accuracy                           0.54       905
+   macro avg       0.54      0.54      0.54       905
+weighted avg       0.55      0.54      0.54       905
+
+[[134  55  15  21]
+ [ 61 120  25  15]
+ [ 23  43 130  52]
+ [ 37  40  32 102]]
+pred:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([255, 258, 202, 190]))
+test:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([225, 221, 248, 211]))
+train:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([529, 533, 506, 543]))
+
+
+neutral vs sad
+Accuracy: 0.7682119205298014
+              precision    recall  f1-score   support
+
+           N       0.79      0.74      0.77       234
+           S       0.74      0.79      0.77       219
+
+    accuracy                           0.77       453
+   macro avg       0.77      0.77      0.77       453
+weighted avg       0.77      0.77      0.77       453
+
+[[174  60]
+ [ 45 174]]
+pred:  (array(['N', 'S'], dtype='<U1'), array([219, 234]))
+test:  (array(['N', 'S'], dtype='<U1'), array([234, 219]))
+train:  (array(['N', 'S'], dtype='<U1'), array([520, 535]))
+
+neutral vs angry
+Accuracy: 0.82560706401766
+              precision    recall  f1-score   support
+
+           A       0.87      0.78      0.82       232
+           N       0.79      0.87      0.83       221
+
+    accuracy                           0.83       453
+   macro avg       0.83      0.83      0.83       453
+weighted avg       0.83      0.83      0.83       453
+
+[[181  51]
+ [ 28 193]]
+pred:  (array(['A', 'N'], dtype='<U1'), array([209, 244]))
+test:  (array(['A', 'N'], dtype='<U1'), array([232, 221]))
+train:  (array(['A', 'N'], dtype='<U1'), array([522, 533]))
+
+neutral vs happy
+Accuracy: 0.7991169977924945
+              precision    recall  f1-score   support
+
+           H       0.80      0.78      0.79       222
+           N       0.80      0.81      0.81       231
+
+    accuracy                           0.80       453
+   macro avg       0.80      0.80      0.80       453
+weighted avg       0.80      0.80      0.80       453
+
+[[174  48]
+ [ 43 188]]
+pred:  (array(['H', 'N'], dtype='<U1'), array([217, 236]))
+test:  (array(['H', 'N'], dtype='<U1'), array([222, 231]))
+train:  (array(['H', 'N'], dtype='<U1'), array([532, 523]))
