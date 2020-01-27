@@ -8,4 +8,36 @@ Auch sad hat mit MSP eine niedrige f1-score (0.38) und mit IEMO eine recht hohe 
 happy wird auf beiden Datensätzen ähnlich gut erkannt (IEMO 0.47, MSP 0.42).
 -> Auf Qualität der Datensätze zurückzuführen?
 
+DT vgl:
+(dif = differenz der f1-scores)
+A vs H
+System performt auf beiden Datensätzen recht gut, accuracy ~ 66%
+IEMO: happy besser als angry, dif 0.1
+MSP: happy besser als angry, dif 0.23
+
+A vs N
+System performt auf beiden Datensätzen gut, accuracy 75% - 81%
+IEMO: neutral besser als angry, dif 0.09
+MSP: neutral deutlich besser als angry, dif 0.37
+
+A vs S
+System performt auf beiden Datensätzen gut, accuracy 76% - 88%
+IEMO: angry und sad werden genau gleich gut erkannt, dif 0
+MSP: angry und sad werden fast gleich gut erkannt, dif 0.02
+
+H vs N
+System performt auf beiden Datensätzen recht gut, accuracy ~ 66%
+IEMO: happy und neutral werden fast gleich gut erkannt, dif 0.01
+MSP: neutral deutlich besser als happy, dif 0.27
+
+H vs S
+System performt auf beiden Datensätzen recht gut, accuracy 71% - 80%
+IEMO: happy besser als sad, dif 0.07
+MSP: happy besser als sad, dif 0.14
+
+N vs S
+System performt auf beiden Datensätzen recht gut, accuracy ~ 70%
+IEMO: neutral besser als sad, dif 0.15
+MSP: neutral deutlich besser als sad, dif 0.41
+
 
