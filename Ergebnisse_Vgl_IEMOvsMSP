@@ -1,17 +1,20 @@
 Ergebnisse/ Schlüsse aus Vergleich DT IEMO vs MSP:
 
 IEMO performt ähnlich gut auf allen Emotionsklassen.
-angry hat hier die höchste f1-score (0.60), happy/ excited die schlechteste (0.47).
+angry hat hier die höchste f1-score (0.60), 
+happy/ excited die schlechteste (0.47).
 Bei MSP gibt es größere Unterschiede in der Performance auf den Klassen.
-angry hat hier die schlechteste f1-score (0.30), neutral die höchste (0.63).
+angry hat hier die schlechteste f1-score (0.30), 
+neutral die höchste (0.63).
 Auch sad hat mit MSP eine niedrige f1-score (0.38) und mit IEMO eine recht hohe (0.58).
 happy wird auf beiden Datensätzen ähnlich gut erkannt (IEMO 0.47, MSP 0.42).
 -> Auf Qualität der Datensätze zurückzuführen?
+-> Auch auf Verteilung der Datenmengen: Neutral ist die größste Klasse
 
 DT vgl:
 (dif = differenz der f1-scores)
 A vs H
-System performt auf beiden Datensätzen recht gut, accuracy ~ 66%
+System performt auf beiden Datensätzen recht gut, accuracy ~ 66% / SVC ~ 67%
 IEMO: happy besser als angry, dif 0.1
 MSP: happy besser als angry, dif 0.23
 
@@ -40,4 +43,56 @@ System performt auf beiden Datensätzen recht gut, accuracy ~ 70%
 IEMO: neutral besser als sad, dif 0.15
 MSP: neutral deutlich besser als sad, dif 0.41
 
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+Ergebnisse/ Schlüsse aus Vergleich SVC IEMO vs MSP:
 
+IEMO performt ähnlich gut auf allen Emotionsklassen.
+sad hat hier die höchste f1-score (0.58), 
+happy und angry die schlechteste (0.47).
+Bei MSP gibt es größere Unterschiede in der Performance auf den Klassen,
+vermutlich bedingt durch die unterschiedliche Verteilung der Datenmengen in den Klassen
+(neutral ist mehr als doppelt so groß wie angry oder sad).
+Unbeschränkte Klassengrößen:
+neutral hat die höchste f1-score (0.66),
+sad hat die niedrigste f1-score (0.01),
+angry wird ebenfalls schlecht erkannt (0.19)
+Klassengröße beschränkt auf 754:
+Die performanceunterschiede sind deutlich geringer.
+neutral hat die höchste f1-score (0.57),
+sad hat die niedrigste f1-score (0.42),
+angry performt deutlich besser (0.55)
+Die Ergebnisse auf den Klassen sind deutlich ausgeglichener,
+wobei sad noch immer zu großen Teilen bei neutral eingeordnet wird.
+
+(dif = differenz der f1-scores)
+A vs H
+accuracy ~ 67%
+IEMO: happy besser als angry, dif 0.33
+MSP: happy deutlich besser als angry, dif 0.54
+
+A vs N
+accuracy ~ 80%
+IEMO: neutral besser als angry, dif 0.15
+MSP: neutral deutlich besser als angry, dif 0.54
+
+A vs S
+accuracy 75% - 88%
+IEMO: angry und sad werden genau gleich gut erkannt, dif 0.02
+MSP: angry und sad werden fast gleich gut erkannt, dif 0.03
+
+H vs N
+accuracy ~ 69%
+IEMO: happy und neutral werden fast gleich gut erkannt, dif 0.06
+MSP: neutral deutlich besser als happy, dif 0.46
+
+H vs S
+accuracy 75% - 81%
+IEMO: happy besser als sad, dif 0.06
+MSP: happy besser als sad, dif 0.13
+
+N vs S
+accuracy ~ 74%
+IEMO: neutral besser als sad, dif 0.14
+MSP: sad wird nicht erkannt, dif 0.85
+MSP, Größe von neutral auf die Hälfte reduziert: sad wird noch immer schlecht erkannt, dif 26

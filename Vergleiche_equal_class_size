@@ -29,8 +29,7 @@ neutral vs sad
 weighted avg       0.71      0.71      0.71       453
 
 [[162  72]
- [ 60 159]]
-pred:  (array(['N', 'S'], dtype='<U1'), array([222, 231]))
+ [ 60 159]]pred:  (array(['N', 'S'], dtype='<U1'), array([222, 231]))
 test:  (array(['N', 'S'], dtype='<U1'), array([234, 219]))
 train:  (array(['N', 'S'], dtype='<U1'), array([520, 535]))
 
@@ -65,6 +64,22 @@ weighted avg       0.77      0.77      0.77       453
 pred:  (array(['H', 'N'], dtype='<U1'), array([209, 244]))
 test:  (array(['H', 'N'], dtype='<U1'), array([222, 231]))
 train:  (array(['H', 'N'], dtype='<U1'), array([532, 523]))
+
+angry vs happy
+              precision    recall  f1-score   support
+
+           A       0.67      0.56      0.61       212
+           H       0.66      0.76      0.71       241
+
+    accuracy                           0.66       453
+   macro avg       0.67      0.66      0.66       453
+weighted avg       0.67      0.66      0.66       453
+
+[[118  94]
+ [ 58 183]]
+pred:  (array(['A', 'H'], dtype='<U1'), array([176, 277]))
+test:  (array(['A', 'H'], dtype='<U1'), array([212, 241]))
+train:  (array(['A', 'H'], dtype='<U1'), array([542, 513]))
 
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
@@ -141,3 +156,20 @@ weighted avg       0.80      0.80      0.80       453
 pred:  (array(['H', 'N'], dtype='<U1'), array([217, 236]))
 test:  (array(['H', 'N'], dtype='<U1'), array([222, 231]))
 train:  (array(['H', 'N'], dtype='<U1'), array([532, 523]))
+
+angry vs happy
+Accuracy: 0.6114790286975718
+              precision    recall  f1-score   support
+
+           A       0.58      0.61      0.60       212
+           H       0.64      0.61      0.63       241
+
+    accuracy                           0.61       453
+   macro avg       0.61      0.61      0.61       453
+weighted avg       0.61      0.61      0.61       453
+
+[[130  82]
+ [ 94 147]]
+pred:  (array(['A', 'H'], dtype='<U1'), array([224, 229]))
+test:  (array(['A', 'H'], dtype='<U1'), array([212, 241]))
+train:  (array(['A', 'H'], dtype='<U1'), array([542, 513]))
