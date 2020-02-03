@@ -61,3 +61,49 @@ weighted avg       0.48      0.48      0.47      3207
 pred:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([ 560,  720, 1422,  505]))
 test:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([ 550,  885, 1201,  571]))
 train:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([1307, 2023, 2820, 1332]))
+
+______________________________________________________________________________________________
+
+DT trainiert auf IEMO, getestet auf MSP mit Begrenzung der Klassen auf 754 Datenpunkte:
+Accuracy: 0.3020557029177719
+              precision    recall  f1-score   support
+
+           A       0.25      0.34      0.29       754
+           H       0.27      0.51      0.35       754
+           N       0.46      0.30      0.36       754
+           S       0.46      0.06      0.10       754
+
+    accuracy                           0.30      3016
+   macro avg       0.36      0.30      0.28      3016
+weighted avg       0.36      0.30      0.28      3016
+
+[[254 462  33   5]
+ [283 387  78   6]
+ [345 142 227  40]
+ [116 441 154  43]]
+pred:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([ 998, 1432,  492,   94]))
+test:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([754, 754, 754, 754]))
+train:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([1103, 1636, 1708, 1084]))
+
+DT trainiert auf MSP mit Begrenzung der Klassen auf 754 Datenpunkte, getested auf IEMO:
+Accuracy: 0.3192912674019165
+              precision    recall  f1-score   support
+
+           A       0.42      0.24      0.30      1103
+           H       0.38      0.14      0.20      1636
+           N       0.33      0.27      0.30      1708
+           S       0.28      0.75      0.41      1084
+
+    accuracy                           0.32      5531
+   macro avg       0.35      0.35      0.30      5531
+weighted avg       0.35      0.32      0.29      5531
+
+[[ 263  308  275  257]
+ [ 264  228  397  747]
+ [ 100   55  459 1094]
+ [   5   11  252  816]]
+pred:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([ 632,  602, 1383, 2914]))
+test:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([1103, 1636, 1708, 1084]))
+train:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([754, 754, 754, 754]))
+
+

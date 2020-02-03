@@ -59,3 +59,45 @@ weighted avg       0.47      0.46      0.43      3207
 pred:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([ 195,  766, 1972,  274]))
 test:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([ 550,  885, 1201,  571]))
 train:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([1307, 2023, 2820, 1332]))
+
+______________________________________________________________________________________________
+
+SVC trainiert auf IEMO, getestet auf MSP mit Begrenzung der Klassen auf 754 Datenpunkte:
+              precision    recall  f1-score   support
+
+           A       0.47      0.69      0.56       754
+           H       0.25      0.40      0.31       754
+           N       0.46      0.39      0.42       754
+           S       0.36      0.02      0.04       754
+
+    accuracy                           0.38      3016
+   macro avg       0.38      0.38      0.33      3016
+weighted avg       0.38      0.38      0.33      3016
+
+[[517 193  39   5]
+ [334 304 113   3]
+ [ 78 363 296  17]
+ [179 366 195  14]]
+pred:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([1108, 1226,  643,   39]))
+test:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([754, 754, 754, 754]))
+train:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([1103, 1636, 1708, 1084]))
+
+DT trainiert auf MSP mit Begrenzung der Klassen auf 754 Datenpunkte, getested auf IEMO:
+              precision    recall  f1-score   support
+
+           A       0.33      0.00      0.01      1103
+           H       0.38      0.32      0.35      1636
+           N       0.39      0.51      0.45      1708
+           S       0.19      0.33      0.24      1084
+
+    accuracy                           0.32      5531
+   macro avg       0.32      0.29      0.26      5531
+weighted avg       0.34      0.32      0.29      5531
+
+[[  4 486 195 418]
+ [  5 531 514 586]
+ [  3 286 879 540]
+ [  0  89 640 355]]
+pred:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([  12, 1392, 2228, 1899]))
+test:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([1103, 1636, 1708, 1084]))
+train:  (array(['A', 'H', 'N', 'S'], dtype='<U1'), array([754, 754, 754, 754]))
