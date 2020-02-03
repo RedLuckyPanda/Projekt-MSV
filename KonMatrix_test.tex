@@ -1,0 +1,101 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+
+\begin{document}
+\title{Einfluss der Korpuszusammensetzung auf die Performance von audiobasierten Emotionserkennungssystemen}
+\author{Niels Lange \and Beate Zywietz}
+\date{20. Januar 2020}
+\maketitle
+
+
+\section{Vergleiche SVM}
+
+IEMO:
+\begin{tabular}{|r|llll|}
+\hline
+GS / DT & A & H & N & S \\
+\hline
+A & 113 & 138 & 47 & 29 \\
+H & 33 & 240 & 173 & 56 \\
+N & 4 & 124 & 287 & 122 \\
+S & 1 & 21 & 68 & 204 \\
+\hline
+\end{tabular} \\
+MSP:
+\begin{tabular}{|r|llll|}
+\hline
+GS / DT & A & H & N & S \\
+\hline
+A & 26 & 50 & 144 & 0 \\
+H & 13 & 87 & 258 & 0 \\
+N & 12 & 47 & 659 & 0 \\
+S & 6 & 15 & 230 & 1 \\
+\hline
+\end{tabular} \\
+
+\section{DT Kombinationen IEMO/ MSP}
+
+train IEMO; test MSP:
+\begin{tabular}{|r|llll|}
+\hline
+GS / DT & A & H & N & S \\
+\hline
+A & 241 & 467 & 35 & 3 \\
+H & 330 & 836 & 92 & 3 \\
+N & 537 & 1429 & 307 & 20 \\
+S & 112 & 534 & 137 & 24 \\
+\hline
+\end{tabular} \\
+train MSP; test IEMO:
+\begin{tabular}{|r|llll|}
+\hline
+GS / DT & A & H & N & S \\
+\hline
+A & 178 & 411 & 278 & 224 \\
+H & 106 & 466 & 607 & 444 \\
+N & 100 & 228 & 656 & 706 \\
+S & 69 & 54 & 320 & 629 \\
+\hline
+\end{tabular} \\
+train beide; test beide:
+\begin{tabular}{|r|llll|}
+\hline
+GS / DT & A & H & N & S \\
+\hline
+A & 254 & 133 & 138 & 25 \\
+H & 180 & 317 & 312 & 76 \\
+N & 104 & 214 & 722 & 161 \\
+S & 22 & 56 & 250 & 243 \\
+\hline
+\end{tabular} \\
+
+\subsection{MSP begrenzt auf 754}
+
+train IEMO; test MSP:
+\begin{tabular}{|r|llll|}
+\hline
+GS / DT & A & H & N & S \\
+\hline
+A & 254 & 462 & 33 & 5 \\
+H & 283 & 387 & 78 & 6 \\
+N & 345 & 142 & 227 & 40 \\
+S & 116 & 441 & 154 & 43 \\
+\hline
+\end{tabular} \\
+train MSP; test IEMO:
+\begin{tabular}{|r|llll|}
+\hline
+GS / DT & A & H & N & S \\
+\hline
+A & 263 & 308 & 275 & 257 \\
+H & 264 & 228 & 397 & 747 \\
+N & 100 & 55 & 459 & 1094 \\
+S & 5 & 11 & 252 & 816 \\
+\hline
+\end{tabular} \\
+
+\end{document}
