@@ -1,0 +1,219 @@
+\documentclass{article} % For LaTeX2e
+\usepackage{iclr2020_conference,times}
+\usepackage{graphicx}
+\usepackage{placeins}
+\usepackage{flafter}
+% Optional math commands from https://github.com/goodfeli/dlbook_notation.
+
+
+\usepackage{hyperref}
+\usepackage{url}
+
+
+\title{Einfluss der Korpuszusammensetzung auf die Performance von audiobasierten Emotionserkennungssystemen}
+
+% Authors must not appear in the submitted version. They should be hidden
+% as long as the \iclrfinalcopy macro remains commented out below.
+% Non-anonymous submissions will be rejected without review.
+
+\author{Niels Lange \& Beate Zywietz\\
+Institut für Maschinelle Sprachverarbeitung\\
+Universität Stuttgart\\
+Pfaffenwaldring 5, 70569 Stuttgart \\
+\texttt{\{st158564, st155422\}@st.uni-stuttgart.de} \\
+}
+%The \author macro works with any number of authors. There are two commands
+% used to separate the names and addresses of multiple authors: \And and \AND.
+%
+% Using \And between authors leaves it to \LaTeX{} to determine where to break
+% the lines. Using \AND forces a linebreak at that point. So, if \LaTeX{}
+% puts 3 of 4 authors names on the first line, and the last on the second
+% line, try using \AND instead of \And before the third author name.
+
+\newcommand{\fix}{\marginpar{FIX}}
+\newcommand{\new}{\marginpar{NEW}}
+
+\iclrfinalcopy % Uncomment for camera-ready version, but NOT for submission.
+\begin{document}
+
+
+\maketitle
+\begin{abstract}
+
+FORSCHUNGSFRAGE: "Welchen Einfluss hat die Zusammensetzung des verwendeten Korpus auf die Performance von DT und SVC?"
+Wir haben beschlossen die classifier auf einem zweiten Korpus zu testen, als wir quasi nie über 45\% gekommen sind, um herauszufinden welche Schwierigkeiten auf die Qualität des verwendeten Korpus zurückzuführen sein könnten
+\end{abstract}
+
+\section{Einleitung und verwandte Literatur}
+
+to do
+
+\section{Methoden}
+
+\subsection{IEMOCAP und MSP-IMPROV}
+
+IEMOCAP ist ein annotierter, englischsprachiger Open Source Korpus, der aus Sprachproben und der dazugehörigen mit einem Motion-Capture-Verfahren parallel aufgezeichneten Gestik und Mimik besteht. Er enthält [???] Sprachproben, insgesamt circa 12 Stunden Material. Für dieses Projekt werden nur die Audiodateien dieses Korpus verwendet. 
+
+10 Schauspieler wurden jeweils in Zweiergruppen aufgenommen, wie sie sowohl kurze Drehbücher vorspielten als auch Dialoge in vorgegebenen Szenarien improvisierten. 
+
+Die aufgenommenen Sprachproben sind in die Klassen Happiness, Anger, Sadness, Neutral, Frustrated, Disgust, Fear, Excitement und Surprise eingeteilt, wobei für dieses Projekt Frustrated, Disgust, Fear und Surprise nicht verwendet werden. Excitement und Happiness werden zu einer Klasse kombiniert, da eine so kleinschrittige Unterteilung der Klassen nach Meinung der Autoren in diesem Fall nicht sinnvoll ist und der Vergleich mit MSP-IMPROV sich so vereinfachen lässt. 
+
+Im Hinblick auf die Qualität der Sprachproben ist auffällig, dass oft fetzenweise die Stimmen der Gesprächspartner zu hören sind. Zudem ist teilweise Hintergrundrauschen hörbar, zum Beispiel bei den Proben aus Sad. 
+
+
+(Geschlechterverteilung der Schauspieler? Total amount of samples die wir benutzt haben? Ein paar Klassen haben wir ja weggelassen)
+Kuchendiagramm mit Klassenverteilung?
+
+
+
+Bei MSP-IMPROV handelt es sich um einen ebenfalls annotierten, englischsprachigen Open Source Korpus, der aus improvisierten Dialogen zwischen je zwei Schauspielern besteht. 
+
+Die insgesamt zwölf Schauspieler (sechs Frauen und sechs Männer) wurden sowohl mit Mikrophon aufgenommen als auch gefilmt, wobei für dieses Projekt wieder nur der Audioteil verwendet wird. Die Schauspieler sollten sich in unterschiedliche Situationen hineinversetzen und Dialoge improvisieren, in die sie jedoch generische Sätze (z.B. "How can I not?"), die target sentences, einbauen sollten, jedes Mal mit einer anderen Emotion. Die Autoren des Korpus erhofften sich so eine natürlichere Darstellung. 
+
+Bei der Auswahl der target sentences wurden mehrere Kriterien beachtet: die Sätze sollten möglichst phonetisch divers sein und dabei generisch genug, um glaubwürdig in unterschiedlichen emotionalen Kontexten auftauchen zu können. 
+
+Die Datenbank enthält nicht nur die target sentences, sondern auch die improvisierten Teile der Szenarios sowie Aufnahmen, in denen die Schauspieler die target sentences vorlesen und Aufnahmen von natürlicher Sprache während der Pausen zwischen den Sessions. Letzterer Teil wird aufgrund von mangelhafter Audioqualität in diesem Projekt nicht verwendet. 
+
+MSP-IMPROV unterscheidet vier Emotionsklassen: Happy, Sad, Angry und Neutral. Insgesamt enthält der für dieses Projekt verwendete Teil von MSP-IMPROV 5653 Sprachproben. 
+
+Auffällig bei der Audioqualität ist auch hier ein hörbares Hintergrundrauschen. Außerdem wechselt die Lautstärke zwischen den einzelnen samples stark. Zudem enthalten die Proben oft mehrere Sekunden Stille am Anfang oder Ende, da die Autoren auch die Mimik der Schauspieler filmten, während diese gerade nicht sprachen. Auch war oft leise die Stimme des Gesprächspartners zu hören. 
+
+(Kuchendiagramm mit Klassenverteilung?)
+
+
+Beim Vergleich der beiden Korpora fiel auf, dass Emotionen teils unterschiedlich gespielt wurden - während wir in IEMOCAP die "traurigen" Sprachproben als leise und in betroffenem Tonfall vorgetragen wahrnahmen, wirkten die Proben der gleichen Klasse in MSP-IMPROV eher aufgelöst und frustriert. 
+
+
+\subsection{Scikit Learn}
+
+Die beiden Datensätze wurden mit zwei unterschiedlichen Machine-Learning-Verfahren benutzt, einem Decision Tree und einer Support Vector Machine. Hierfür wurden die in der Open Source Bibliothek Scikit-learn zur Verfügung gestellten Module verwendet. Die Module wurden jeweils von Hand in Python implementiert. 
+(Welche Python Version? Welche Einstellungen? Code dazu?)
+
+\section{Ergebnisse}
+
+\subsection{Versuche}
+
+\subsubsection{Baselinesysteme für DT und SVC auf IEMO (2, 5 zsm) und MSP (ohne P)}
+
+Zunächst werden die beiden Korpora getrennt voneinander mit sowohl dem Decision Tree (DT) als auch dem Support Vector Classifier (SVC) verwendet. 
+
+
+Ich glaube es macht hier mehr Sinn, eine Tabelle zu benutzen?
+
+
+Angry war hierbei auf IEMOCAP die Klasse mit dem höchsten F1-Score (0.60), hatte auf MSP-IMPROV dagegen den niedrigsten F1-Score. 
+
+1DT (Daten von Vergleiche DT IEMOvsMSP)
+IEMO angry höchste f1 von 0.60, MSP angry niedrigste f1 von 0.30
+IEMO happy niedrigste f1 von 0.47, MSP happy durchschnittliche f1 von 0.42
+neutral bei beiden gut, IEMO 0.54, MSP 0.63
+IEMO sad gut (0.58), bei MSP eher schlecht (0.38)
+DT performt auf IEMO in allen Klassen ähnlich gut, ausgeglichen
+DT performt auf MSP nicht auf allen Klassen gut, größere Unterschiede
+Insgesamt performt DT auf IEMO etwas besser als auf MSP
+
+SVC
+IEMO sad höchste f1 von 0.58, MSP sad niedrigste f1 von 0.01
+IEMO happy \& angry niedrigste f1von 0.47, MSP happy 0.31, angry nur 0.19
+neutral bei beiden gut, IEMO 0.52, MSP 0.66
+SVC performt auf IEMO recht gut, ausgeglichen
+SVC auf MSP erzeugt große Unterschiede zwischen f1 der Klassen
+schlechtere performance auf MSP auf unterschiedlich große Klassen zurückzuführen: neutral mit Abstand die größte Klasse, angry und sad nur wenig Daten
+
+Unterschiede in Datensatz wirken sich bei SVC stärker aus
+
+\subsubsection{Baseline DT und SVC auf Emotionspaaren}
+
+Um die Unterschiede in der Performance unserer Systeme auf den Korpora näher zu untersuchen führen wir Tests auf Emotionspaaren aus. Dabei nutzen wir jeweils nur die Daten aus zwei Emotionsklassen eines Datensatzes als Input, um genau zu erkennen, welche Emotionen besonders gut oder schlecht zu unterscheiden sind. \\ \\
+DecisionTree: \\
+Zunächst führen wir die Experimente mit dem DT durch.
+Dabei lässt sich erkennen, dass das Emotionspaar aus den Klassen Happy und Angry mit beiden Datensätzen schwer zu unterscheiden sind. Bei Training mit Daten aus MSP-IMPROV werden Daten aus A besonders oft als H vorhergesagt.
+Das Emotionspaar aus angry und sad wird hingegen mit beiden Datensätzen jeweils sehr gut unterschieden.
+Mit Daten aus MSP-IMPROV fällt auf, dass viele Daten aus anderen Emotionsklassen oft fälschlicherweise Neutral zugeordnet werden. Dies lässt sich vermutlich auf Unterschiede in den Datenmengen pro Klasse zurückzuführen, denn die Neutral-Klasse von MSP ist deutlich größer als die anderen. \\
+- - Hinweis auf Diagramm zu Klassengrößen? - - \\ \\
+SupportVectorClassifier: \\
+Wir wiederholen das Experiment mit dem SVC.
+Wieder werden die Emotionen happy und angry auf beiden Datensätzen am schlechtesten unterschieden. Mit MSP-IMPROV werden Daten aus Angry noch öfter als Happy vorhergesagt, sodass der recall der Klasse Angry nur 0,15 beträgt.
+Vergleiche mit Neutral sind mit dem SVC auf MSP-IMPROV noch schlechter als mit dem DT. Daten aus Happy, Angry und Sad werden meistens als Neutral vorhergesagt, keine der drei Klassen erzielen einen recall über 0,33.
+Das Emotionspaar aus Neutral und Sad wird mit Training auf IEMOCAP gut unterschieden, mit Training auf MSP-IMPROV hingegen wird die Klasse Sad überhaupt nicht benutzt. \\ \\
+Schlussfolgerung: \\
+Auf beiden Systemen sind mit beiden Datensätzen die Klassen Happy und Angry besonders schwer zu unterscheiden. Angry und Sad hingegen werden in allen Versuchen gut unterschieden. Zudem können wir feststellen, dass der Größenunterschied zwischen den Klassen einen großen Einfluss auf die Performance unserer Systeme hat, besonders auf den SVC. \\
+- - Mögliche Begründung für Performance von H\&A/ A\&S? - - \\ \\
+
+\subsubsection{DT und SVC auf MSP, alle Klassen gleich groß}
+
+2.3
+DT, MSP begrenzt auf 754 Datenpunkte
+angry f1 vom niedrigsten (0.30) zum zweithöchsten Wert (0.56)
+sad f1 von .038 zu 0.51
+happy f1 von 0.42 zu 0.50
+neutral f1 von 0.63 zu 0.58, immer noch höchste f1
+performance insgesamt ausgeglichener, ähnlich zu IEMO
+v a angry und sad werden deutlich besser erkannt
+insgesamt performt DT auf MSP nun genau so gut wie auf IEMO
+
+SVC, MSP begrenzt
+sad f1 von 0.01 zu 0.42, noch immer niedrigste f1
+angry f1 von .19 zu 0.55
+happy f1 von 0.31 zu 0.46
+neutral f1 von 0.66 zu 0.57, noch immer höchste f1
+performance insgesamt ausgeglichener, ähnlich zu IEMO
+sad, angry und happy deutlich besser erkannt
+precision von neutral ebenfalls höher
+sad wird trotzdem am schlechtesten erkannt
+
+\subsubsection{DT und SVC auf MSP, alle Klassen gleich groß, Emotionspaare}
+
+2.4
+
+DT, MSP begrenzt, Emotionspaare (Daten aus Vergleiche equal class ??)
+happy und angry immer noch am schwersten zu unterscheiden
+happy und neutral deutlich besser zu unterscheiden
+Emotionspaare mit neutral werden deutlich besser unterschieden
+
+SVC, MSP begrenzt, Emotionspaare
+happy und angry noch immer am schlechtesten zu unterscheiden, genauso mit angry und neutral
+neutral und sad sind nun gut zu unterscheiden, sad wird genau so gut unterschieden wie neutral
+
+das Anpassen der Klassengrößen hat die Performance von DT und SVC deutlich verbessert
+
+\subsubsection{DT auf Kombinationen von IEMO und MSP, Klassengröße von MSP begrenzt und unbegrenzt}
+
+siehe notes?
+
+\subsubsection{SVC auf Kombinationen von IEMO und MSP, Klassengröße von MSP begrenzt und unbegrenzt}
+
+
+
+\subsection{notes}
+
+Vergleich IEMOCAP / MSP-IMPROV
+Wenn man das Modell auf den einen Korpus trainiert und mit dem anderen testet, verschlechtert sich die performance extrem, z. B. bei sad. Auffällig: Emotionen werden in den Korpora anders geschauspielert, in IEMOCAP ist Sad zum Beispiel sehr ruhig, in MSP-IMPROV sind die Personen auf sehr aufgebrachte Art traurig/aufgelöst
+-> Wie definiert man, wie Emotionen klingen sollen?
+
+Wenn man auf MSP-IMPROV trainiert und auf IEMOCAP testet, wird Sad in Neutral geschoben (weil Sad in IEMOCAP nicht so extrem aufgelöst klingt?
+
+\subsection{Diskussion}
+
+Wenn man auf MSP-IMPROV trainiert und auf IEMOCAP testet, wird Sad in Neutral geschoben (weil Sad in IEMOCAP nicht so extrem aufgelöst klingt?
+
+Angry ist aber zum Beispiel gut zu erkennen, obwohl die Klasse kleiner als Sad ist, vielleicht weil Angry einen sehr charakteristischen Klang hat?
+
+SVC hat Probleme wenn Klassen im Umfang stark schwanken (= in manchen hunderte von samples sind und in manchen nur ein 5 oder 6) (was bei MSV-IMPROV so war was vermutlich ein Faktor ist warum die VSC hier schlechter performt)
+SVC performt auf IEMOCAP auch schlechter seit wir Happy und Excited kombiniert haben(?)
+
+\section{Zusammenfassung}
+
+Schwierigkeit: Wie definiert man, wie Emotionen klingen sollen? Soll z.B. sad laut und aufgelöst sein oder ruhig und zurückgezogen? (Oft auch kulturelle Unterschiede?)
+
+Verbesserungsvorschläge und so: Wir hätten Korpora nachbearbeiten können (z. B. stille Teile von MSP-IMPROV abschneiden)
+
+Etwa gleichgroße Klassengröße verbessert performance auf jeden Fall
+
+\pagebreak
+\tableofcontents
+\pagebreak
+\bibliography{iclr2020_conference}
+\bibliographystyle{iclr2020_conference}
+
+\end{document}
