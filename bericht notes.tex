@@ -1,0 +1,54 @@
+INTRODUCTION
+
+
+Emotionserkennung ist ein komplexe, anspruchsvolle Aufgabe. Auch uns Menschen gelingt es oft nicht, Gehörtes einstimmig einer Emotion zuordnen. 
+
+Wie wir Stimuli interpretieren, ist hochgradig von unserem Wissen über den Gesprächskontext, unserem Verhältnis zu unserem Gesprächspartner und uns selbst als Person abhängig. Auch der kulturelle Hintergrund kann eine Rolle spielen. So wird zum Beispiel Russisch von Menschen, die selbst nicht Russisch sprechen, oft als aggressiv und übellaunig klingend beschrieben. 
+
+Zudem gehen Emotionen in der Praxis fließend ineinander über. An welchem Punkt geht traurig in frustriert über? Wo frustriert in wütend? 
+
+Machine Learning Classifier sind oft noch sehr unzuverlässig, wenn es darum geht, gesprochener Sprache eine Emotion zuzuordnen. Nachdem wir bei unseren ersten Versuchen mit Emotionserkennungssystemen nur sehr schlechte Ergebnisse erzielten, beschlossen wir, für unser Projekt den Einfluss verschiedener Eigenschaften des verwendeten Korpus auf die Performance von Classifiern näher zu untersuchen. 
+
+Im Rahmen dieses Projekts verwenden wir zwei Machine-Learning-Verfahren, einen Decision Tree Classifier und einen Support Vector Classifier, und zwei Korpora von Sprachproben, IEMOCAP und MSP-IMPROV, die wir verändern und kombinieren und auf denen wir dann die Classifier trainieren. So können wir herausfinden, welche strukturellen und qualitativen Eigenschaften der verwendeten Trainingskorpora und Testdaten Faktoren bei der Performance von Emotionserkennungssystemen sein können. 
+
+(Literatur?)
+
+
+\begin{tabular}{|r|llll|}
+\hline
+GS / SVC & A & H & N & S \\
+\hline
+A & 495 & 203 & 42 & 6 \\
+H & 684 & 419 & 156 & 2 \\
+N & 787 & 783 & 700 & 23 \\
+S & 186 & 402 & 206 & 13 \\
+\hline
+\end{tabular}
+\begin{tabular}{|r|llll|}
+\hline
+GS / SVC & A & H & N & S \\
+\hline
+A & 1 & 313 & 777 & 0 \\
+H & 2 & 243 & 1376 & 2 \\
+N & 2 & 69 & 1618 & 1 \\
+S & 0 & 49 & 1021 & 2 \\
+\hline
+\end{tabular} \\
+\begin{tabular}{|r|llll|}
+\hline
+GS / SVC & A & H & N & S \\
+\hline
+A & 99 & 226 & 211 & 14 \\
+H & 65 & 321 & 460 & 39 \\
+N & 23 & 179 & 918 & 81 \\
+S & 8 & 40 & 383 & 140 \\
+\hline
+\end{tabular} \\
+
+Abb. 1: Konfusionsmatrix für SVC trainiert auf IEMOCAP und getestet auf MSP-IMPROV (links), trainiert auf MSP-IMPROV und getestet auf IEMOCAP (rechts) und trainiert und getestet auf Kombination aus beiden Korpora (unten). Reihen: Gold Standard, Zeilen: DT. \\ \\
+
+Testet man den auf IEMOCAP trainierten SVC auf MSP-IMPROV, wird Sad sehr schlecht erkannt (Recall 0.02)und hauptsächlich Happy zugeordnet. Neutral wird ca. zu je einem Drittel Angry, Happy und sich selbst zugeordnet (Recall 0.31). Happy (Recall 0.33) wird häufiger Angry zugeordnet als sich selbst. Angry wird gut erkannt (Recall 0.66) und teils Happy zugeordnet. 
+
+Testet man den auf MSP-IMPROV trainierten SVC auf IEMOCAP, werden Angry und Sad fast gar nicht verwendet (Precision je 0.2 und 0.4, Recall und F1-Score jedoch für beide 0). Happy wird fast vollständig Neutral zugeordnet (Recall von 0.15). Neutral wird mit einem Recall von 0.96 sehr gut erkannt (F1-Score 0.5). 
+
+Trainiert und testet man den SVC auf beiden Korpora, wird Neutral mit einem Recall von 0.76 (F1-Score 0.58) am besten erkannt. Angry wird mit einem Recall von 0.18 (F1-Score 0.27) am schlechtesten erkannt und meist Happy oder Neutral zugeordnet. Sad wird ebenfalls nur schlecht erkannt (Recall 0.25, F1-Score 0.33) und meist Neutral zugeordnet. Happy wird häufiger richtig eingeordnet (Recall 0.36, F1-Score 0.39), aber ebenfalls meist Neutral zugeordnet. 
