@@ -5,6 +5,8 @@
 \usepackage{flafter}
 \usepackage{pgf-pie}
 \nocite{iemocap}
+\nocite{binat}
+\nocite{msp}
 % Optional math commands from https://github.com/goodfeli/dlbook_notation.
 
 
@@ -55,13 +57,11 @@ Zudem gehen Emotionen in der Praxis fließend ineinander über. An welchem Punkt
 
 Machine Learning Classifier sind oft noch sehr unzuverlässig, wenn es darum geht, gesprochener Sprache eine Emotion zuzuordnen. 
 
-In "Emotion recognition using a hierarchical binary decision tree approach"\citep{binat} arbeiten die Autoren mit hierarchischen binären Decision Trees auf dem Korpus emph{IEMOCAP}, wobei die Emotionsklasse emph{Neutral} am besten vom System erkannt wurde. emph{Angry} und emph{Happy} wurden oft miteinander verwechselt, ebenso emph{Sad} und emph{Neutral}. Insbesondere Happy wurde nur schlecht erkannt. 
+In "Emotion recognition using a hierarchical binary decision tree approach"\citep{binat} arbeiten die Autoren mit hierarchischen binären Decision Trees auf dem Korpus \emph{IEMOCAP}, wobei die Emotionsklasse \emph{Neutral} am besten vom System erkannt wurde. \emph{Angry} und \emph{Happy} wurden oft miteinander verwechselt, ebenso \emph{Sad} und \emph{Neutral}. Insbesondere Happy wurde nur schlecht erkannt. 
 
 Nachdem wir bei unseren ersten Versuchen mit Emotionserkennungssystemen nur sehr schlechte Ergebnisse erzielten, beschlossen wir, für unser Projekt den Einfluss verschiedener Eigenschaften des verwendeten Korpus auf die Performance von Classifiern näher zu untersuchen. 
 
-Im Rahmen dieses Projekts verwenden wir zwei Machine-Learning-Verfahren, einen \emph{Decision Tree Classifier} und einen \emph{Support Vector Classifier}, und zwei Korpora von Sprachproben, IEMOCAP\citep{iemocap} und MSP-IMPROV\cite{msp}. Wir arbeiten sowohl mit Teilen der Korpora als auch mit Kombinationen, trainieren die Classifier auf die neuen Datensätze und vergleichen die Ergebnisse. So können wir herausfinden, welche strukturellen und qualitativen Eigenschaften der verwendeten Trainingskorpora und Testdaten Faktoren bei der Performance von Emotionserkennungssystemen sein können. 
-
-(Literatur?)
+Im Rahmen dieses Projekts verwenden wir zwei Machine-Learning-Verfahren, einen \emph{Decision Tree Classifier} und einen \emph{Support Vector Classifier}, und zwei Korpora von Sprachproben, IEMOCAP\citep{iemocap} und MSP-IMPROV\citep{msp}. Wir arbeiten sowohl mit Teilen der Korpora als auch mit Kombinationen, trainieren die Classifier auf die neuen Datensätze und vergleichen die Ergebnisse. So können wir herausfinden, welche strukturellen und qualitativen Eigenschaften der verwendeten Trainingskorpora und Testdaten Faktoren bei der Performance von Emotionserkennungssystemen sein können. 
 \section{Methoden}
 IEMOCAP ("interactive emotional dyadic motion capture
 database") ist ein manuell annotierter englischsprachiger Korpus, der aus Sprachproben und der dazugehörigen mit einem Motion-Capture-Verfahren parallel aufgezeichneten Gestik und Mimik der Schauspieler besteht. Er enthält insgesamt circa 12 Stunden Material. Für dieses Projekt verwenden wir nur die Audiodateien dieses Korpus. 
@@ -143,7 +143,7 @@ S & 6 & 15 & 230 & 1 \\
 \end{tabular} \\
 Abb. 3: Konfusionsmatrix zu IEMOCAP (links) und MSP-IMPROV (rechts) mit Support Vector Classifier, Reihen: Gold Standard, Zeilen: SVC. \\ \\
 Der Support Vector Classifier performt auf IEMOCAP für Sad am besten (F1-Score 0.58), auf MSP-IMPROV dagegen am schlechtesten (F1-Score 0.01). Happy und Angry werden sowohl auf IEMOCAP als auch auf MSP-IMPROV nur schlecht erkannt: Auf IEMOCAP haben die beiden Klassen mit 0.47 den niedrigsten F1-Score, auf MSP-IMPROV sogar nur 0.31 für Happy und 0.19 für Angry. 
-Neutral wird auf beiden Korpora verhältnismäßig gut erkannt (F1-Score von 0.52 für IEMOCAP, 0.66 für MSP), allerdings gibt es hier viele emph{false positives}. Auch dieser Classifier performt auf IEMOCAP ausgeglichener über die einzelnen Klassen und insgesamt besser als auf MSP-IMPROV. 
+Neutral wird auf beiden Korpora verhältnismäßig gut erkannt (F1-Score von 0.52 für IEMOCAP, 0.66 für MSP), allerdings gibt es hier viele \emph{false positives}. Auch dieser Classifier performt auf IEMOCAP ausgeglichener über die einzelnen Klassen und insgesamt besser als auf MSP-IMPROV. 
 
 An dieser Stelle sei angemerkt, dass besonders in MSP-IMPROV die Menge an Daten pro Klasse stark schwankt und für Neutral mit Abstand das meiste Material existiert. 
 \subsection{Paarweiser Vergleich der Emotionsklassen für IEMOCAP und MSP-IMPROV}
