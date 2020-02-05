@@ -47,18 +47,28 @@ Wir haben beschlossen die classifier auf einem zweiten Korpus zu testen, als wir
 
 \section{Einleitung und verwandte Literatur}
 
-to do
+Emotionserkennung ist ein komplexe, anspruchsvolle Aufgabe. Auch uns Menschen gelingt es oft nicht, Gehörtes einstimmig einer Emotion zuzuordnen. 
+
+Wie wir Stimuli interpretieren, ist hochgradig von unserem Wissen über den Gesprächskontext, unserem Verhältnis zu unserem Gesprächspartner und uns selbst als Person abhängig. Auch der kulturelle Hintergrund kann eine Rolle spielen. So wird zum Beispiel Russisch von Menschen, die selbst nicht Russisch sprechen, oft als aggressiv und übellaunig klingend beschrieben. 
+
+Zudem gehen Emotionen in der Praxis fließend ineinander über. An welchem Punkt geht traurig in frustriert über? Wo frustriert in wütend? 
+
+Machine Learning Classifier sind oft noch sehr unzuverlässig, wenn es darum geht, gesprochener Sprache eine Emotion zuzuordnen. Nachdem wir bei unseren ersten Versuchen mit Emotionserkennungssystemen nur sehr schlechte Ergebnisse erzielten, beschlossen wir, für unser Projekt den Einfluss verschiedener Eigenschaften des verwendeten Korpus auf die Performance von Classifiern näher zu untersuchen. 
+
+Im Rahmen dieses Projekts verwenden wir zwei Machine-Learning-Verfahren, einen Decision Tree Classifier und einen Support Vector Classifier, und zwei Korpora von Sprachproben, IEMOCAP und MSP-IMPROV. Wir arbeiten sowohl mit Teilen der Korpora als auch mit Kombinationen, trainieren die Classifier auf die neuen Datensätze und vergleichen die Ergebnisse. So können wir herausfinden, welche strukturellen und qualitativen Eigenschaften der verwendeten Trainingskorpora und Testdaten Faktoren bei der Performance von Emotionserkennungssystemen sein können. 
+
+(Literatur?)
 
 \section{Methoden}
 
 IEMOCAP ("interactive emotional dyadic motion capture
-database") ist ein annotierter englischsprachiger Korpus, der aus Sprachproben und der dazugehörigen mit einem Motion-Capture-Verfahren parallel aufgezeichneten Gestik und Mimik besteht. Er enthält insgesamt circa 12 Stunden Material. Für dieses Projekt werden nur die Audiodateien dieses Korpus verwendet. 
+database") ist ein manuell annotierter englischsprachiger Korpus, der aus Sprachproben und der dazugehörigen mit einem Motion-Capture-Verfahren parallel aufgezeichneten Gestik und Mimik der Schauspieler besteht. Er enthält insgesamt circa 12 Stunden Material. Für dieses Projekt verwenden wir nur die Audiodateien dieses Korpus. 
 
-10 Schauspieler (fünf Frauen und fünf Männer) wurden jeweils in Zweiergruppen aufgenommen, wie sie sowohl kurze Drehbücher vorspielten als auch Dialoge in vorgegebenen Szenarien improvisierten. 
+Zehn Schauspieler, fünf Frauen und fünf Männer, wurden jeweils in Zweiergruppen aufgenommen, wie sie sowohl kurze Drehbücher vorspielten als auch Dialoge in vorgegebenen Szenarien improvisierten. 
 
-Die aufgenommenen Sprachproben sind in die Klassen Happiness, Anger, Sadness, Neutral, Frustrated, Disgust, Fear, Excitement und Surprise eingeteilt, wobei für dieses Projekt Frustrated, Disgust, Fear und Surprise nicht verwendet werden. Excitement und Happiness werden zu einer Klasse kombiniert, da eine so kleinschrittige Unterteilung der Klassen unserer Auffassung nach in diesem Fall nicht sinnvoll ist und der Vergleich mit MSP-IMPROV sich so vereinfachen lässt. Insgesamt werden für dieses Projekt 5531 Sprachproben aus IEMOCAP verwendet. 
+Der Korpus ist in die Klassen Happiness, Anger, Sadness, Neutral, Frustrated, Disgust, Fear, Excitement und Surprise unterteilt. Für dieses Projekt werden Frustrated, Disgust, Fear und Surprise nicht verwendet. Excitement und Happiness werden von uns zu einer Klasse zusammengezogen, da eine so kleinschrittige Unterteilung der Emotionen unserer Auffassung nach in diesem Fall nicht sinnvoll ist und der Vergleich mit MSP-IMPROV, unserem zweiten Korpus, sich so vereinfachen lässt. Insgesamt werden für dieses Projekt 5531 Sprachproben aus IEMOCAP verwendet. 
 
-Im Hinblick auf die Audioqualität ist auffällig, dass oft fetzenweise die Stimmen der Gesprächspartner zu hören sind. Zudem ist teilweise Hintergrundrauschen hörbar, zum Beispiel bei den Proben aus Sad. \\ \\
+Im Hinblick auf die Audioqualität fällt auf, dass oft fetzenweise die Stimme des Gesprächspartners zu hören ist. Zudem ist teilweise Hintergrundrauschen hörbar, beispielsweise bei dem Material in Sad. \\ \\
 Bei MSP-IMPROV handelt es sich ebenfalls um einen annotierten englischsprachigen Korpus, der aus improvisierten Dialogen zwischen je zwei Schauspielern besteht. 
 
 Die insgesamt zwölf Schauspieler (sechs Frauen und sechs Männer) wurden sowohl mit Mikrophon aufgenommen als auch gefilmt, wobei für dieses Projekt wieder nur der Audioteil verwendet wird. Die Schauspieler sollten sich in unterschiedliche Situationen hineinversetzen und Dialoge improvisieren, in die sie jedoch generische Sätze (z. B. "How can I not?"), die target sentences, einbauen sollten, jedes Mal mit einer anderen Emotion. Die Autoren des Korpus erhofften sich so eine natürlichere Darstellung. 
@@ -291,9 +301,11 @@ S & 8 & 40 & 383 & 140 \\
 
 Abb. 1: Konfusionsmatrix zu SVC, links trainiert auf IEMOCAP und getestet auf MSP-IMPROV, rechts trainiert auf MSP-IMPROV und getestet auf IEMOCAP, unten trainiert und getestet auf Kombination beider Korpora, Reihen: Gold Standard, Zeilen: SVC. \\
 
-(MSP begrenzt/unbegrenzt??)
+Testet man den auf IEMOCAP trainierten SVC auf MSP-IMPROV, wird Sad sehr schlecht erkannt (Recall 0.02)und hauptsächlich Happy zugeordnet. Neutral wird ca. zu je einem Drittel Angry, Happy und sich selbst zugeordnet (Recall 0.31). Happy (Recall 0.33) wird häufiger Angry zugeordnet als sich selbst. Angry wird gut erkannt (Recall 0.66) und teils Happy zugeordnet. 
 
-Fazit: sehr, sehr schlechte performance. 
+Testet man den auf MSP-IMPROV trainierten SVC auf IEMOCAP, werden Angry und Sad fast gar nicht verwendet (Precision je 0.2 und 0.4, Recall und F1-Score jedoch für beide 0). Happy wird fast vollständig Neutral zugeordnet (Recall von 0.15). Neutral wird mit einem Recall von 0.96 sehr gut erkannt (F1-Score 0.5). 
+
+Trainiert und testet man den SVC auf beiden Korpora, wird Neutral mit einem Recall von 0.76 (F1-Score 0.58) am besten erkannt. Angry wird mit einem Recall von 0.18 (F1-Score 0.27) am schlechtesten erkannt und meist Happy oder Neutral zugeordnet. Sad wird ebenfalls nur schlecht erkannt (Recall 0.25, F1-Score 0.33) und meist Neutral zugeordnet. Happy wird häufiger richtig eingeordnet (Recall 0.36, F1-Score 0.39), aber ebenfalls meist Neutral zugeordnet. 
 
 \subsection{notes}
 
