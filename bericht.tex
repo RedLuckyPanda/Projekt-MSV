@@ -8,9 +8,9 @@
 % Optional math commands from https://github.com/goodfeli/dlbook_notation.
 
 
+
 \usepackage{hyperref}
 \usepackage{url}
-
 
 \title{Einfluss der Korpuszusammensetzung auf die Performance von audiobasierten Emotionserkennungssystemen}
 
@@ -41,9 +41,9 @@ Pfaffenwaldring 5, 70569 Stuttgart \\
 
 \maketitle
 \begin{abstract}
+Im Rahmen dieses Projekts setzen wir uns mit dem Einfluss des Korpusaufbaus auf die Performance von Machine-Learning-basierten Emotionserkennungssystemen auseinander, indem wir mit verschiedenen Kombinationen von Classifiern und Korpora arbeiten. 
 
-FORSCHUNGSFRAGE: "Welchen Einfluss hat die Zusammensetzung des verwendeten Korpus auf die Performance von DT und SVC?"
-Wir haben beschlossen die classifier auf einem zweiten Korpus zu testen, als wir quasi nie über 45\% gekommen sind, um herauszufinden welche Schwierigkeiten auf die Qualität des verwendeten Korpus zurückzuführen sein könnten
+Wir verwenden die Datensätze IEMOCAP und MSP-IMPROV in Kombination mit zwei verschiedenen Machine-Learning-Verfahren, einem Decision Tree und einem Support Vector Classifier. Wir testen die Korpora sowohl einzeln als auch in Kombination miteinander sowie mit ausgeglichener Klassengröße. Zusätzlich untersuchen wir die Performance der Classifier auf Paaren von je zwei Emotionsklassen eines Korpus. Wir dokumentieren dabei, welche strukturellen Eigenschaften der verwendeten Korpora die Performance der Classifier beeinflussen und welche Emotionen korpusanabhängig besonders leicht oder schwer für die Classifier erkennbar zu sein scheinen. Abschließend stellen wir Vermutungen darüber an, auf welche Eigenschaften der Emotionen dies zurückzuführen sein könnte. 
 \end{abstract}
 
 \section{Einleitung und verwandte Literatur}
@@ -53,9 +53,13 @@ Wie wir Stimuli interpretieren, ist hochgradig von unserem Wissen über den Gesp
 
 Zudem gehen Emotionen in der Praxis fließend ineinander über. An welchem Punkt geht traurig in frustriert über? Wo frustriert in wütend? 
 
-Machine Learning Classifier sind oft noch sehr unzuverlässig, wenn es darum geht, gesprochener Sprache eine Emotion zuzuordnen. Nachdem wir bei unseren ersten Versuchen mit Emotionserkennungssystemen nur sehr schlechte Ergebnisse erzielten, beschlossen wir, für unser Projekt den Einfluss verschiedener Eigenschaften des verwendeten Korpus auf die Performance von Classifiern näher zu untersuchen. 
+Machine Learning Classifier sind oft noch sehr unzuverlässig, wenn es darum geht, gesprochener Sprache eine Emotion zuzuordnen. 
 
-Im Rahmen dieses Projekts verwenden wir zwei Machine-Learning-Verfahren, einen \emph{Decision Tree Classifier} und einen \emph{Support Vector Classifier}, und zwei Korpora von Sprachproben, \href{https://link.springer.com/content/pdf/10.1007/s10579-008-9076-6.pdf}{IEMOCAP} und \href{https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7374697}{MSP-IMPROV}. Wir arbeiten sowohl mit Teilen der Korpora als auch mit Kombinationen, trainieren die Classifier auf die neuen Datensätze und vergleichen die Ergebnisse. So können wir herausfinden, welche strukturellen und qualitativen Eigenschaften der verwendeten Trainingskorpora und Testdaten Faktoren bei der Performance von Emotionserkennungssystemen sein können. 
+In "Emotion recognition using a hierarchical binary decision tree approach"\citep{binat} arbeiten die Autoren mit hierarchischen binären Decision Trees auf dem Korpus emph{IEMOCAP}, wobei die Emotionsklasse emph{Neutral} am besten vom System erkannt wurde. emph{Angry} und emph{Happy} wurden oft miteinander verwechselt, ebenso emph{Sad} und emph{Neutral}. Insbesondere Happy wurde nur schlecht erkannt. 
+
+Nachdem wir bei unseren ersten Versuchen mit Emotionserkennungssystemen nur sehr schlechte Ergebnisse erzielten, beschlossen wir, für unser Projekt den Einfluss verschiedener Eigenschaften des verwendeten Korpus auf die Performance von Classifiern näher zu untersuchen. 
+
+Im Rahmen dieses Projekts verwenden wir zwei Machine-Learning-Verfahren, einen \emph{Decision Tree Classifier} und einen \emph{Support Vector Classifier}, und zwei Korpora von Sprachproben, IEMOCAP\citep{iemocap} und MSP-IMPROV\cite{msp}. Wir arbeiten sowohl mit Teilen der Korpora als auch mit Kombinationen, trainieren die Classifier auf die neuen Datensätze und vergleichen die Ergebnisse. So können wir herausfinden, welche strukturellen und qualitativen Eigenschaften der verwendeten Trainingskorpora und Testdaten Faktoren bei der Performance von Emotionserkennungssystemen sein können. 
 
 (Literatur?)
 \section{Methoden}
@@ -283,8 +287,19 @@ In unseren Experimenten fallen ebenfalls mehrere Emotionen auf, die system- und 
 
 Um diese Faktoren weiter untersuchen und sichere Aussagen treffen zu können, wäre es sinnvoll mit weiteren Korpora und Machine-Learning-Verfahren zu experimentieren und die Ergebnisse zu vergleichen. Eine bessere Aufbereitung der verwendeten Datensätze beugt der Fehlerquelle durch schlechte Audioqualität vor, die uns vor allem in MSP-IMPROV aufgefallen ist. Da wir keine genauen Analysen der Merkmale unserer Daten durchgeführt haben, basieren unsere Theorien auf subjektiver Wahrnehmung und sollten durch weitere Experimente mit Fokus auf bestimmte Eigenschaften der Emotionen überprüft werden.
 \section{Zusammenfassung}
+Wir haben unter Zuhilfenahme eines Decision Trees und eines Support Vector Classifiers untersucht, welchen Einfluss die Struktur der von uns verwendeten Korpora auf die Performance der Classifier hat und welche Emotionen korpusunabhängig besonders einfach oder schwierig erkennbar zu sein scheinen. 
 
+Dabei haben wir festgestellt, dass die Mengenverteilung der Daten über die verschiedenen Emotionsklassen eine große Rolle spielt. In unserem Fall enthielt die Klasse Neutral aus MSP-IMPROV zum Beispiel deutlich mehr Material als die anderen Klassen des Korpus, was unsere Resultate stark beeinflusste. 
 
+In einem weiteren Experiment haben wir die Klassengrößen an die der Klasse mit den wenigsten Daten angeglichen, sodass alle Klassen gleich viele Datenpunkte enthielten. Dadurch konnten wir konkretere Hinweise auf korpusabhängige und korpusunabhängige Faktoren in unseren Ergebnissen erhalten. Des weiteren haben wir die Korpora kombiniert und jeweils und unsere Classifier je auf dem einen trainiert und auf dem anderen getestet, um zusätzliche Erkenntnisse über die Unterschiede der Korpora zu erhalten. 
+
+So stellten wir fest, dass die  als "laut"/"energiegeladen" gespielte Emotion Angry von den Classifiern verhältnismäßig gut von der "leise"/"niedergeschlagene" gespielten Emotion Sad unterschieden wird, aber dafür schwer von Happy, was ebenfalls als eher "laut"/"energiegeladen" gespielt wurde, zu unterscheiden ist. 
+
+Uns fiel zudem auf, dass Sad in IEMOCAP und MSV-IMPROV unterschiedlich dargestellt wurde (leise und niedergeschlagen gegen laut und verzweifelt), was erklären kann, weshalb Sad beim Training auf MSP-IMPROV und Testen auf IEMOCAP nur sehr schlecht erkannt wurde. 
+
+Wir halten fest, dass die Korpuszusammensetzung einen großen Einfluss auf die Performance von Emotionserkennungssystemen hat. 
+
+Um den unbeabsichtigten Einfluss von Unterschieden zwischen verschiedenen Korpora auf die Performance zu minimieren und Experimente somit vergleichbarer zu machen sollte zum einen auf eine ausgeglichene Datenverteilung zwischen den Klassen geachtet werden, zum anderen müsste es einen Weg geben, Emotionen zu standardisieren. Da Emotionen jedoch von jeder Sprache, Kultur und sogar von jedem Mensch unterschiedlich ausgedrückt und wahrgenommen werden, wird es kaum möglich sein, Fehler dieser Art gänzlich zu vermeiden.
 \pagebreak
 \tableofcontents
 \pagebreak
